@@ -1,0 +1,31 @@
+CREATE DATABASE store2;
+
+USE store2;
+
+CREATE TABLE Venta (
+    ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Total DECIMAL(10, 2),
+    IVA DECIMAL(5, 2)
+);
+
+CREATE TABLE Producto (
+    ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Nombre VARCHAR(255),
+    Precio DECIMAL(10, 2),
+    Cantidad INT
+);
+
+CREATE TABLE ProductoVenta (
+    ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    IdVenta INT,
+    IdProducto INT,
+    CantidadVendida INT,
+    Subtotal DECIMAL(10, 2),
+    PrecioVenta DECIMAL(10, 2),
+    FOREIGN KEY (IdVenta) REFERENCES Venta(ID),
+    FOREIGN KEY (IdProducto) REFERENCES Producto(ID)
+);
+
+SELECT * FROM Venta;
+SELECT * FROM Producto;
+SELECT * FROM ProductoVenta;
